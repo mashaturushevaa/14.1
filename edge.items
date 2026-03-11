@@ -1,0 +1,7 @@
+// Локальні пристрої
+Switch Local_Light "Локальне освітлення" <light> ["Control"]
+Number Local_Power "Споживання (Локально) [%.1f W]" <energy>
+
+// Edge Status
+String Edge_Mode "Режим шлюзу [%s]" <settings>
+Switch Internet_Status "Наявність інтернету" <network>

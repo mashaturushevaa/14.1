@@ -1,0 +1,24 @@
+rule "Edge Simulator"
+when
+    Time cron "0 * * * * ?" // спрацьовує на початку кожної хвилини
+then
+    // Симулюємо стрибок навантаження вище 2000
+    Local_Power.postUpdate(2500)
+    logInfo("Edge", "Симуляція: Навантаження зросло до 2500W")
+end
+
+rule "Edge Autonomous Logic"
+when
+    Item Local_Power changed
+then
+    if ((Local_Power.state as Number) > 2000) {
+        Local_Light.sendCommand(OFF)
+        logInfo("Edge", "!!! УВАГА: Перевантаження мережі ідентифіковано локально !!!")
+        
+        // Повертаємо в норму через 30 сек, щоб можна було записати ще раз
+        createTimer(now.plusSeconds(30), [|
+            Local_Power.postUpdate(500)
+            logInfo("Edge", "Система повернулася в норму")
+        ])
+    }
+end

@@ -1,0 +1,10 @@
+sitemap edge label="Edge Gateway Dashboard" {
+    Frame label="Статус Edge-вузла" {
+        Text item=Edge_Mode labelcolor=[=="OFFLINE - Автономний режим"="red", !="OFFLINE - Автономний режим"="green"]
+        Switch item=Internet_Status label="Мережа"
+    }
+    Frame label="Локальне керування" {
+        Switch item=Local_Light
+        Text item=Local_Power
+    }
+}
