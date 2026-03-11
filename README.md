@@ -20,12 +20,3 @@
 
 ## 4. Результати
 Реалізовано повноцінний Edge-шлюз, здатний підтримувати комфорт та безпеку будинку в умовах повної відсутності зовнішнього зв'язку.
-graph TD
-    subgraph "Local Home Network (Edge)"
-    A[Sensors & Devices] --> B[OpenHAB Edge Gateway]
-    B --> C{Local Rules Engine}
-    C -->|Decision| A
-    B --> D[(Local Persistence)]
-    B --> E[Local Web UI]
-    end
-    E --- X((NO CLOUD DEPENDENCY))
